@@ -1,59 +1,142 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #6b73ff, #000dff);
-    color: #fff;
-    min-height: 100vh;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #6b73ff, #000dff);
+  color: #fff;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+#quiz-app h1 {
+  font-size: 2.5rem;
+  color: #fff;
+}
+
+#welcome-box {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  background: #ffffff;
+  color: #000;
+  padding: 20px;
+  border-radius: 10px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+#welcome-box h1 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+#welcome-box p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+#welcome-box .form-label {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+#welcome-box input[type="range"] {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#quiz-box {
+  display: none;
+  background: #fff;
+  color: #000;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.progress-bar {
+  height: 10px;
+  background-color: #000dff;
+  animation: progress-animation 1.5s linear infinite;
+}
+
+@keyframes progress-animation {
+  0% { background-color: #6b73ff; }
+  50% { background-color: #000dff; }
+  100% { background-color: #6b73ff; }
+}
+
+button {
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #000dff;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+  background-color: #6b73ff !important;
+}
+
+.correct {
+  animation: correct-animation 0.5s ease;
+  background-color: #28a745 !important;
+  color: #fff;
+}
+
+.wrong {
+  animation: wrong-animation 0.5s ease;
+  background-color: #dc3545 !important;
+  color: #fff;
+}
+
+@keyframes correct-animation {
+  from { background-color: #28a745; }
+  to { background-color: #6b73ff; }
+}
+
+@keyframes wrong-animation {
+  from { background-color: #dc3545; }
+  to { background-color: #6b73ff; }
+}
+
+.alert {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  #quiz-app h1 {
-    font-size: 2.5rem;
-    color: #fff;
+  to {
+    opacity: 1;
   }
-  
-  #quiz-box {
-    background: #fff;
-    color: #000;
-    border-radius: 10px;
-    max-width: 600px;
-    margin: 0 auto;
+}
+
+/* Styling for slider labels */
+.form-label {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+/* Feedback messages styling */
+.feedback {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #welcome-box, #quiz-box {
+    width: 90%;
   }
-  
-  .progress-bar {
-    height: 10px;
-    background-color: #000dff;
-    animation: progress-animation 1.5s linear infinite;
-  }
-  
-  @keyframes progress-animation {
-    0% { background-color: #6b73ff; }
-    50% { background-color: #000dff; }
-    100% { background-color: #6b73ff; }
-  }
-  
+
   button {
-    transition: transform 0.3s ease, background-color 0.3s;
+    width: 100%;
+    padding: 15px;
   }
-  
-  button:hover {
-    transform: scale(1.1);
-    background-color: #6b73ff !important;
-  }
-  
-  .correct {
-    animation: correct-animation 0.5s ease;
-  }
-  
-  .wrong {
-    animation: wrong-animation 0.5s ease;
-  }
-  
-  @keyframes correct-animation {
-    from { background-color: #28a745; }
-    to { background-color: #6b73ff; }
-  }
-  
-  @keyframes wrong-animation {
-    from { background-color: #dc3545; }
-    to { background-color: #6b73ff; }
-  }
-  
+}

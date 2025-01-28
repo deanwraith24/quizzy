@@ -1,10 +1,36 @@
+const welcomeBox = document.getElementById('welcome-box');
 const quizBox = document.getElementById('quiz-box');
+const questionCountInput = document.getElementById('question-count');
+const timePerQuestionInput = document.getElementById('time-per-question');
+const questionCountValue = document.getElementById('question-count-value');
+const timePerQuestionValue = document.getElementById('time-per-question-value');
+const startGameButton = document.getElementById('start-game');
 
 let currentQuestionIndex = 0;
 let score = 0;
 let timerInterval;
-const totalQuestions = 5;
-const timePerQuestion = 15; // 15 seconds per question
+let totalQuestions = 10; // Default value
+let timePerQuestion = 15; // Default value
+
+// Update displayed slider values
+questionCountInput.addEventListener('input', () => {
+  questionCountValue.textContent = questionCountInput.value;
+});
+timePerQuestionInput.addEventListener('input', () => {
+  timePerQuestionValue.textContent = timePerQuestionInput.value;
+});
+
+// Start game when the user clicks "Start Game"
+startGameButton.addEventListener('click', async () => {
+  totalQuestions = parseInt(questionCountInput.value);
+  timePerQuestion = parseInt(timePerQuestionInput.value);
+
+  welcomeBox.style.display = 'none';
+  quizBox.style.display = 'block';
+
+  const questions = await fetchQuestions();
+  renderQuestion(questions);
+});
 
 // Fetch questions from Open Trivia DB API
 async function fetchQuestions() {
@@ -50,7 +76,6 @@ function handleAnswer(button, correctAnswer, questions) {
 
   clearInterval(timerInterval);
 
-  // Add feedback message
   const feedbackMessage = document.createElement('div');
   feedbackMessage.classList.add('alert', 'mt-3');
   feedbackMessage.innerHTML = isCorrect
@@ -63,7 +88,6 @@ function handleAnswer(button, correctAnswer, questions) {
   button.classList.add(isCorrect ? 'correct' : 'wrong');
   if (isCorrect) score++;
 
-  // Proceed to the next question after a delay
   setTimeout(() => {
     currentQuestionIndex++;
     renderQuestion(questions);
@@ -95,7 +119,6 @@ function renderResults() {
     <h2 class="mb-4">Quiz Complete!</h2>
     <p class="mb-4">Your score is <strong>${score}/${totalQuestions}</strong>.</p>
     <button class="btn btn-success" onclick="window.location.reload()">Play Again</button>
-    <a href="https://twitter.com/intent/tweet?text=I scored ${score}/${totalQuestions} on this quiz! Try it yourself!" target="_blank" class="btn btn-info mt-3">Share Score</a>
   `;
 }
 
@@ -105,6 +128,3 @@ function decodeHTML(html) {
   textArea.innerHTML = html;
   return textArea.value;
 }
-
-// Initialize the quiz
-fetchQuestions().then(renderQuestion);

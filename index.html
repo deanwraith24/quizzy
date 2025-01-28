@@ -4,25 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quizzy</title>
-  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <div class="container text-center mt-5">
-    <div id="quiz-app">
-      <h1 class="mb-4">Quizzy</h1>
-      <div id="quiz-box" class="card p-4 shadow">
-        <!-- Quiz Content Will Be Dynamically Loaded Here -->
+  <div class="container">
+    <!-- Welcome Box -->
+    <div id="welcome-box" class="text-center">
+      <h1 class="mb-4">Welcome to the Quizzy</h1>
+      <p class="mb-3">Select your preferences below:</p>
+      
+      <div class="mb-4">
+        <label for="question-count" class="form-label">Number of Questions: <span id="question-count-value">10</span></label>
+        <input type="range" id="question-count" class="form-range" min="5" max="20" value="10" step="1">
       </div>
+
+      <div class="mb-4">
+        <label for="time-per-question" class="form-label">Time Per Question (seconds): <span id="time-per-question-value">15</span></label>
+        <input type="range" id="time-per-question" class="form-range" min="10" max="25" value="15" step="1">
+      </div>
+
+      <button id="start-game" class="btn btn-primary">Start Game</button>
     </div>
+
+    <!-- Quiz Box -->
+    <div id="quiz-box" class="mt-4"></div>
   </div>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Lottie Animations -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
-  <!-- Custom Script -->
   <script src="assets/js/script.js"></script>
 </body>
 </html>
