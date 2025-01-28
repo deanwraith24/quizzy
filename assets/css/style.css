@@ -1,0 +1,59 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #6b73ff, #000dff);
+    color: #fff;
+    min-height: 100vh;
+  }
+  
+  #quiz-app h1 {
+    font-size: 2.5rem;
+    color: #fff;
+  }
+  
+  #quiz-box {
+    background: #fff;
+    color: #000;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .progress-bar {
+    height: 10px;
+    background-color: #000dff;
+    animation: progress-animation 1.5s linear infinite;
+  }
+  
+  @keyframes progress-animation {
+    0% { background-color: #6b73ff; }
+    50% { background-color: #000dff; }
+    100% { background-color: #6b73ff; }
+  }
+  
+  button {
+    transition: transform 0.3s ease, background-color 0.3s;
+  }
+  
+  button:hover {
+    transform: scale(1.1);
+    background-color: #6b73ff !important;
+  }
+  
+  .correct {
+    animation: correct-animation 0.5s ease;
+  }
+  
+  .wrong {
+    animation: wrong-animation 0.5s ease;
+  }
+  
+  @keyframes correct-animation {
+    from { background-color: #28a745; }
+    to { background-color: #6b73ff; }
+  }
+  
+  @keyframes wrong-animation {
+    from { background-color: #dc3545; }
+    to { background-color: #6b73ff; }
+  }
+  
